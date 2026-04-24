@@ -119,6 +119,32 @@ Replace `/absolute/path/to/server.py` with the actual absolute path to `server.p
 
 ---
 
+## Integrating with Claude Code CLI
+
+Use the `claude mcp add` command to register the server. It runs as a local stdio process, so use the `--transport stdio` option:
+
+```bash
+claude mcp add --transport stdio simple-mcp-server -- python /absolute/path/to/server.py
+```
+
+Replace `/absolute/path/to/server.py` with the actual absolute path to `server.py` on your machine.
+
+By default this is scoped to the current project. To make it available across all your projects:
+
+```bash
+claude mcp add --transport stdio --scope user simple-mcp-server -- python /absolute/path/to/server.py
+```
+
+Verify it's registered:
+
+```bash
+claude mcp list
+```
+
+Then inside a Claude Code session, run `/mcp` to confirm the server is connected and see its available tools, resources, and prompts.
+
+---
+
 ## Architecture Decision Records
 
 Key architectural decisions are documented in [`docs/adr/`](docs/adr/):
